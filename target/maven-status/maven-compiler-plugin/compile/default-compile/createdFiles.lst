@@ -1,0 +1,7 @@
+br\com\lcasadocodigo\loja\models\Produto.class
+br\com\lcasadocodigo\loja\controllers\PagesController.class
+br\com\lcasadocodigo\loja\DAO\ProdutoDAO.class
+br\com\lcasadocodigo\loja\controllers\ProdutoController.class
+br\com\lcasadocodigo\loja\conf\ServletSpringMVC.class
+br\com\lcasadocodigo\loja\conf\JPAConfiguration.class
+br\com\lcasadocodigo\loja\conf\AppWebConfiguration.class
