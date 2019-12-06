@@ -9,8 +9,8 @@
         <module name="casaDoCodigo" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="12">
-      <module name="casaDoCodigo" target="12" />
+    <bytecodeTargetLevel>
+      <module name="casaDoCodigo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
