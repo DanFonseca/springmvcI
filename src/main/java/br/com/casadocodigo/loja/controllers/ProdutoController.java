@@ -7,17 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 
 @Controller
+@RequestMapping("produtos")
 public class ProdutoController {
 
     @Autowired
     private ProdutoDAO produtoDAO;
 
-    @RequestMapping("/produtos/form")
+    @RequestMapping("form")
     public ModelAndView form(){
 
        ModelAndView modelAndView = new ModelAndView("produtos/form");
@@ -26,12 +28,13 @@ public class ProdutoController {
        return modelAndView;
     }
 
-    @RequestMapping(value = "/cadastrarProduto", method = RequestMethod.POST)
-    public String cadastrarProduto (Produto produto){
-
+    @RequestMapping(value = "cadastrarProduto", method = RequestMethod.POST)
+    public ModelAndView cadastrarProduto (Produto produto, RedirectAttributes redirectAttributes){
         System.out.println(produto);
         produtoDAO.gravar(produto);
-        return "produtos/cadastradoComSucesso";
+        redirectAttributes.addFlashAttribute("sucesso", "Produto Cadastrado com Sucesso");
+
+        return  new ModelAndView("redirect:listar");
     }
 
 

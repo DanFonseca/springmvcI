@@ -7,6 +7,7 @@
     <title>Cadastrar Produtos</title>
 </head>
 <body>
+<div>${sucesso}</div>
         <table border="1">
 
             <tr>
@@ -18,15 +19,14 @@
         <c:forEach var = "produto" items = "${produtos}">
 
             <tr>
-                <td>"${produto.titulo}"</td>
-                <td>"${produto.descricao}"</td>
-                <td>"${produto.quantidadeDePaginas}"</td>
+                <td>${produto.titulo}</td>
+                <td>${produto.descricao}</td>
+                <td>${produto.quantidadeDePaginas}</td>
             </tr>
 
         </c:forEach>
-        
-        </table>
 
+        </table>
 
     </form>
 </body>

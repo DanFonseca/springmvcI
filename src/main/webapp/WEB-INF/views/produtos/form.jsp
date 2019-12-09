@@ -15,7 +15,7 @@
 <body>
 
 
-    <form action="${pageContext.request.contextPath}/cadastrarProduto" method="POST">
+    <form action="${pageContext.request.contextPath}/produtos/cadastrarProduto" method="POST">
 
 
         <div>
