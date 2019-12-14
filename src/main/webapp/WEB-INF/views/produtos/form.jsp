@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fform" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -15,22 +18,32 @@
 <body>
 
 
-    <form action="${pageContext.request.contextPath}/produtos/cadastrarProduto" method="POST">
+
+<form:form action="${s:mvcUrl('PC#cadastrarProduto').build()}" method="POST" modelAttribute="produto">
 
 
         <div>
             <label>Título</label>
-            <input type="text" name="titulo">
+            <form:input  path="titulo"/>
+            <form:errors path="titulo"/>
         </div>
 
         <div>
             <label>Quantidade de Páginas</label>
-            <input type="text" name = "quantidadeDePaginas">
+            <form:input path = "quantidadeDePaginas"/>
+            <form:errors path="quantidadeDePaginas"/>
+        </div>
+
+        <div>
+            <label>Data de Lançamento</label>
+            <fform:input path="dataLancamento"/>
+            <form:errors path="dataLancamento"/>
         </div>
 
         <div>
             <label>Descrição</label>
-            <textarea rows="10" cols="50" name="descricao" ></textarea>
+            <form:textarea rows="10" cols="50" path="descricao" />
+            <form:errors path="descricao"/>
         </div>
 
         <div>
@@ -38,15 +51,22 @@
 
             <c:forEach  var="tipo" items="${tipos}" varStatus="status">
                 <label>${tipo}</label>
-                <input type="text" name="precos[${status.index}].valor" />
+                <form:input type="text" path="precos[${status.index}].valor" />
                 <input type="hidden" name="precos[${status.index}].tipo" value="${tipo}" />
             </c:forEach>
+
         </div>
 
+    <div>
+        <label>Sumário</label>
+        <input type="file" name="sumario">
+    </div>
 
         <button type="submit">Cadastrar</button>
 
 
-    </form>
+    </form:form>
+
+
 </body>
 </html>

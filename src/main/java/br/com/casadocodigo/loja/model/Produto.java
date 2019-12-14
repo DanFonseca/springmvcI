@@ -1,8 +1,15 @@
 package br.com.casadocodigo.loja.model;
+import org.hibernate.TypeMismatchException;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.sql.ClientInfoStatus;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+
+import java.util.Calendar;
 import java.util.List;
-import br.com.casadocodigo.loja.model.Preco;
+
 
 @Entity
 public class Produto {
@@ -10,15 +17,26 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
     private String titulo;
     private int quantidadeDePaginas;
     private String descricao;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Temporal(TemporalType.DATE)
+    private Calendar dataLancamento;
+    private String sumarioPath;
 
     @ElementCollection
-    private  List<Preco> precos;
+    private  List<@Valid Preco> precos;
 
 
+    public String getSumarioPath() {
+        return sumarioPath;
+    }
 
+    public void setSumarioPath(String sumarioPath) {
+        this.sumarioPath = sumarioPath;
+    }
 
     public int getId() {
         return id;
@@ -62,6 +80,18 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+
+    public Calendar getDataLancamento() {
+        return dataLancamento;
+    }
+
+    public void setDataLancamento(Calendar dataLancamento) {
+        this.dataLancamento = dataLancamento;
+    }
+
+
+
 
     @Override
     public String toString() {
