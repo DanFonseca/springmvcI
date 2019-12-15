@@ -19,7 +19,7 @@
 
 
 
-<form:form action="${s:mvcUrl('PC#cadastrarProduto').build()}" method="POST" modelAttribute="produto">
+<form:form action="${s:mvcUrl('PC#cadastrarProduto').build()}" method="POST" modelAttribute="produto" enctype="multipart/form-data">
 
 
         <div>
@@ -59,7 +59,7 @@
 
     <div>
         <label>Sumário</label>
-        <input type="file" name="sumario">
+        <input name="sumario" type="file">
     </div>
 
         <button type="submit">Cadastrar</button>
