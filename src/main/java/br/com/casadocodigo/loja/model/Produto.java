@@ -21,10 +21,18 @@ public class Produto {
     private String titulo;
     private int quantidadeDePaginas;
     private String descricao;
+
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     private Calendar dataLancamento;
+
     private String sumarioPath;
+
+    @ElementCollection
+    private  List<@Valid Preco> precos;
+
+
+
 
 
     public String getSumarioPath() {
@@ -34,9 +42,6 @@ public class Produto {
     public void setSumarioPath(String sumarioPath) {
         this.sumarioPath = sumarioPath;
     }
-
-    @ElementCollection
-    private  List<@Valid Preco> precos;
 
     public int getId() {
         return id;

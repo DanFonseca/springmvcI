@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -67,13 +68,13 @@ public class ProdutoController {
         produtoDAO.gravar(produto);
         redirectAttributes.addFlashAttribute("sucesso", "Produto Cadastrado com Sucesso");
 
-        return  new ModelAndView("redirect:listar");
+        return  new ModelAndView("redirect:/produtos/");
     }
 
 
 
 
-    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView listarProduto (){
 
         List<Produto> produtos = produtoDAO.listarProdutos();
@@ -81,5 +82,15 @@ public class ProdutoController {
         modelAndView.addObject("produtos", produtos);
 
         return  modelAndView;
+    }
+
+    @RequestMapping(value = "detalhe/{id}", method = RequestMethod.GET)
+    public ModelAndView detalhe (@PathVariable("id") Integer id){
+       Produto produto = produtoDAO.buscarProduto(id);
+
+        ModelAndView modelAndView = new ModelAndView("produtos/detalhe");
+        modelAndView.addObject("produto", produto);
+
+        return modelAndView;
     }
 }
