@@ -2,7 +2,7 @@ package br.com.casadocodigo.loja.controllers;
 import br.com.casadocodigo.loja.DAO.ProdutoDAO;
 import br.com.casadocodigo.loja.infra.FileSaver;
 import br.com.casadocodigo.loja.model.Produto;
-import br.com.casadocodigo.loja.model.tipoPreco;
+import br.com.casadocodigo.loja.model.TipoPreco;
 import br.com.casadocodigo.loja.validator.ProdutoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,7 +40,7 @@ public class ProdutoController {
     public ModelAndView form(Produto produto){
 
        ModelAndView modelAndView = new ModelAndView("produtos/form");
-       modelAndView.addObject("tipos", tipoPreco.values());
+       modelAndView.addObject("tipos", TipoPreco.values());
 
        return modelAndView;
     }
@@ -85,7 +85,7 @@ public class ProdutoController {
     }
 
     @RequestMapping(value = "detalhe/{id}", method = RequestMethod.GET)
-    public ModelAndView detalhe (@PathVariable("id") Integer id){
+    public ModelAndView detalhe (@PathVariable("id") java.lang.Integer id){
        Produto produto = produtoDAO.buscarProduto(id);
 
         ModelAndView modelAndView = new ModelAndView("produtos/detalhe");

@@ -1,13 +1,11 @@
 package br.com.casadocodigo.loja.DAO;
 
 import br.com.casadocodigo.loja.model.Produto;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository

@@ -1,5 +1,5 @@
 package br.com.casadocodigo.loja.model;
 
-public enum tipoPreco {
+public enum TipoPreco {
     EBOOK, COMBO, IMPRESSO;
 }

@@ -1,8 +1,6 @@
 package br.com.casadocodigo.loja.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Embeddable
@@ -10,7 +8,7 @@ public class Preco {
 
     //@NotNull
     private BigDecimal valor;
-    private tipoPreco tipo;
+    private TipoPreco tipo;
 
 
     public BigDecimal getValor() {
@@ -20,11 +18,11 @@ public class Preco {
         this.valor = valor;
     }
 
-    public tipoPreco getTipo() {
+    public TipoPreco getTipo() {
         return tipo;
     }
 
-    public void setTipo(tipoPreco tipo) {
+    public void setTipo(TipoPreco tipo) {
         this.tipo = tipo;
     }
 

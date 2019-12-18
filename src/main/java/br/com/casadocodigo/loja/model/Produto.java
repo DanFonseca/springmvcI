@@ -1,18 +1,19 @@
 package br.com.casadocodigo.loja.model;
-import org.hibernate.TypeMismatchException;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
 public class Produto {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -105,6 +106,21 @@ public class Produto {
                 ", quantidadeDePaginas=" + quantidadeDePaginas +
                 ", descricao='" + descricao + '\'' +
                 '}';
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return id == produto.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
 }
