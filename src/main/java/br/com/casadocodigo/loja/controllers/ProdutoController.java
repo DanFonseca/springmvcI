@@ -85,7 +85,7 @@ public class ProdutoController {
     }
 
     @RequestMapping(value = "detalhe/{id}", method = RequestMethod.GET)
-    public ModelAndView detalhe (@PathVariable("id") java.lang.Integer id){
+    public ModelAndView detalhe (@PathVariable("id") Integer id){
        Produto produto = produtoDAO.buscarProduto(id);
 
         ModelAndView modelAndView = new ModelAndView("produtos/detalhe");
