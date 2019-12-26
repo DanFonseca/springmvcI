@@ -9,6 +9,7 @@
 </head>
 <body>
 <div>${sucesso}</div>
+<div>${falha}</div>
         <table border="1">
 
             <tr>
