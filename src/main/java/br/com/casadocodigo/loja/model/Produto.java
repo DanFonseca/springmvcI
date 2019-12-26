@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -123,4 +124,13 @@ public class Produto {
         return Objects.hash(id);
     }
 
+    public BigDecimal precoPara(TipoPreco tipoPreco) {
+
+        return precos.stream()
+                .filter(preco -> preco.getTipo()
+                .equals(tipoPreco))
+                .findFirst()
+                .get()
+                .getValor();
+    }
 }
