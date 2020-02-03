@@ -5,6 +5,7 @@ import br.com.casadocodigo.loja.model.Produto;
 import br.com.casadocodigo.loja.model.TipoPreco;
 import br.com.casadocodigo.loja.validator.ProdutoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -37,6 +38,7 @@ public class ProdutoController {
     FileSaver fileSaver;
 
     @RequestMapping("form")
+
     public ModelAndView form(Produto produto){
 
        ModelAndView modelAndView = new ModelAndView("produtos/form");
@@ -48,6 +50,7 @@ public class ProdutoController {
 
 
     @RequestMapping(value = "cadastrarProduto", method = RequestMethod.POST)
+    @CacheEvict(value="produtosHome", allEntries=true)
     public ModelAndView cadastrarProduto
             (
             MultipartFile sumario,
